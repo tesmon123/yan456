@@ -39,6 +39,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeModal = document.querySelector('.close-modal');
     const mainContent = document.getElementById('mainContent');
 
+    // 自动登出时间（5分钟）
+    const AUTO_LOGOUT_TIME = 5 * 60 * 1000; // 5分钟，单位毫秒
+
+    // 自动登出函数
+    function setupAutoLogout() {
+        const logoutTime = localStorage.getItem('logoutTime');
+        if (logoutTime) {
+            const remainingTime = parseInt(logoutTime) - Date.now();
+            if (remainingTime > 0) {
+                setTimeout(logout, remainingTime);
+            } else {
+                logout();
+            }
+        }
+    }
+
     // 显示登录模态框
     function showLoginModal() {
         loginModal.style.display = 'flex';
@@ -53,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function checkLogin() {
         const isLoggedIn = localStorage.getItem('isLoggedIn');
         if (isLoggedIn === 'true') {
+            setupAutoLogout(); // 检查并设置自动登出
             mainContent.style.display = 'block';
             hideLoginModal();
         } else {
@@ -69,14 +86,14 @@ document.addEventListener('DOMContentLoaded', function () {
             'user': '123456',
             'guest': 'guest123'
         };
-        
+
         return validUsers[username] === password;
     }
 
     // 处理登录表单提交
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const errorMsg = document.getElementById('errorMsg');
@@ -84,10 +101,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (validateLogin(username, password)) {
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('username', username);
+
+            // 设置自动登出时间
+            const logoutTime = Date.now() + AUTO_LOGOUT_TIME;
+            localStorage.setItem('logoutTime', logoutTime.toString());
+            setTimeout(logout, AUTO_LOGOUT_TIME);
+
             hideLoginModal();
             mainContent.style.display = 'block';
             errorMsg.textContent = '';
-            
+
             // 更新导航栏显示用户名
             const userInfo = document.getElementById('userInfo');
             if (userInfo) {
@@ -99,9 +122,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // 登出功能
-    window.logout = function() {
+    window.logout = function () {
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('username');
+        localStorage.removeItem('logoutTime'); // 清除登出时间
         location.reload();
     };
 
@@ -109,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     closeModal.addEventListener('click', hideLoginModal);
 
     // 点击模态框外部关闭
-    loginModal.addEventListener('click', function(e) {
+    loginModal.addEventListener('click', function (e) {
         if (e.target === loginModal) {
             hideLoginModal();
         }
@@ -127,4 +151,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
-
