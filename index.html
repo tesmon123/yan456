@@ -29,571 +29,405 @@
         </div>
     </div>
 
-    <!-- 主要内容 -->
-    <div id="mainContent" style="display: none;">
-        <!-- 头部大图 -->
-        <header>
-            <div class="header-content">
-                <div class="logo">东方烟韵</div>
-                <div class="slogan">品鉴中国烟草文化的千年韵味</div>
-            </div>
-        </header>
+    <!DOCTYPE html>
+    <html lang="zh-CN">
 
-        <!-- 导航栏 -->
-        <nav>
-            <div class="container nav-container">
-                <div class="nav-logo">中国香烟品牌</div>
-                <div class="nav-user">
-                    <span id="userInfo"></span>
-                    <button onclick="logout()" class="logout-btn">登出</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>香烟品牌展示</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Arial', sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                padding: 20px;
+            }
+
+            .container {
+                max-width: 1400px;
+                margin: 0 auto;
+                background: rgba(255, 255, 255, 0.95);
+                border-radius: 20px;
+                padding: 40px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(10px);
+            }
+
+            .header {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .title {
+                font-size: 3rem;
+                font-weight: bold;
+                background: linear-gradient(45deg, #667eea, #764ba2);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                margin-bottom: 10px;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+                color: #666;
+                margin-bottom: 20px;
+            }
+
+            .count {
+                display: inline-block;
+                background: linear-gradient(45deg, #667eea, #764ba2);
+                color: white;
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-weight: bold;
+            }
+
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                margin-top: 30px;
+            }
+
+            .image-card {
+                background: white;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                position: relative;
+            }
+
+            .image-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            }
+
+            .image-card img {
+                width: 100%;
+                height: 250px;
+                object-fit: contain;
+                background: #f8f9fa;
+                transition: transform 0.3s ease;
+            }
+
+            .image-card:hover img {
+                transform: scale(1.05);
+            }
+
+            .image-name {
+                padding: 15px;
+                text-align: center;
+                font-weight: bold;
+                color: #333;
+                background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+                border-top: 1px solid #dee2e6;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: bold;
+                font-size: 1.1rem;
+            }
+
+            .image-card:hover .overlay {
+                opacity: 1;
+            }
+
+            @media (max-width: 768px) {
+                .container {
+                    padding: 20px;
+                }
+
+                .title {
+                    font-size: 2rem;
+                }
+
+                .gallery {
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 15px;
+                }
+
+                .image-card img {
+                    height: 200px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .gallery {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                .image-card img {
+                    height: 150px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1 class="title">香烟品牌展示</h1>
+                <p class="subtitle">精选香烟品牌图片集合</p>
+                <span class="count">共 37 个品牌</span>
+            </div>
+
+            <div class="gallery">
+                <div class="image-card">
+                    <img src="黑贵.png" alt="黑贵">
+                    <div class="overlay">黑贵</div>
+                    <div class="image-name">黑贵</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="esse橘子味.jpg" alt="ESSE橘子味">
+                    <div class="overlay">ESSE橘子味</div>
+                    <div class="image-name">ESSE橘子味</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="esse葡萄味.jpg" alt="ESSE葡萄味">
+                    <div class="overlay">ESSE葡萄味</div>
+                    <div class="image-name">ESSE葡萄味</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="中华双中支.png" alt="中华双中支">
+                    <div class="overlay">中华双中支</div>
+                    <div class="image-name">中华双中支</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="中华软.png" alt="中华软">
+                    <div class="overlay">中华软</div>
+                    <div class="image-name">中华软</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="五叶神.jpg" alt="五叶神">
+                    <div class="overlay">五叶神</div>
+                    <div class="image-name">五叶神</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="南京雨花石.png" alt="南京雨花石">
+                    <div class="overlay">南京雨花石</div>
+                    <div class="image-name">南京雨花石</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="奇景.png" alt="奇景">
+                    <div class="overlay">奇景</div>
+                    <div class="image-name">奇景</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="好日子.png" alt="好日子">
+                    <div class="overlay">好日子</div>
+                    <div class="image-name">好日子</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="峡谷柔情.png" alt="峡谷柔情">
+                    <div class="overlay">峡谷柔情</div>
+                    <div class="image-name">峡谷柔情</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="灰狼.jpg" alt="灰狼">
+                    <div class="overlay">灰狼</div>
+                    <div class="image-name">灰狼</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="炫赫门.jpg" alt="炫赫门">
+                    <div class="overlay">炫赫门</div>
+                    <div class="image-name">炫赫门</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="白利群.png" alt="白利群">
+                    <div class="overlay">白利群</div>
+                    <div class="image-name">白利群</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="白红塔山.jpg" alt="白红塔山">
+                    <div class="overlay">白红塔山</div>
+                    <div class="image-name">白红塔山</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="白芙蓉王.jpg" alt="白芙蓉王">
+                    <div class="overlay">白芙蓉王</div>
+                    <div class="image-name">白芙蓉王</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="真龙.jpg" alt="真龙">
+                    <div class="overlay">真龙</div>
+                    <div class="image-name">真龙</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="硬云烟.jpg" alt="硬云烟">
+                    <div class="overlay">硬云烟</div>
+                    <div class="image-name">硬云烟</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="硬双喜.png" alt="硬双喜">
+                    <div class="overlay">硬双喜</div>
+                    <div class="image-name">硬双喜</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="硬珍品.jpg" alt="硬珍品">
+                    <div class="overlay">硬珍品</div>
+                    <div class="image-name">硬珍品</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="红利群.jpg" alt="红利群">
+                    <div class="overlay">红利群</div>
+                    <div class="image-name">红利群</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="红南京.png" alt="红南京">
+                    <div class="overlay">红南京</div>
+                    <div class="image-name">红南京</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="红牡丹.png" alt="红牡丹">
+                    <div class="overlay">红牡丹</div>
+                    <div class="image-name">红牡丹</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="芙蓉王.jpg" alt="芙蓉王">
+                    <div class="overlay">芙蓉王</div>
+                    <div class="image-name">芙蓉王</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="荷花出口版.png" alt="荷花出口版">
+                    <div class="overlay">荷花出口版</div>
+                    <div class="image-name">荷花出口版</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="荷花细支.png" alt="荷花细支">
+                    <div class="overlay">荷花细支</div>
+                    <div class="image-name">荷花细支</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="莲香双喜.jpg" alt="莲香双喜">
+                    <div class="overlay">莲香双喜</div>
+                    <div class="image-name">莲香双喜</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="蓝利群.jpg" alt="蓝利群">
+                    <div class="overlay">蓝利群</div>
+                    <div class="image-name">蓝利群</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="蓝楼.jpg" alt="蓝楼">
+                    <div class="overlay">蓝楼</div>
+                    <div class="image-name">蓝楼</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="软云烟.jpg" alt="软云烟">
+                    <div class="overlay">软云烟</div>
+                    <div class="image-name">软云烟</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="软双喜.jpg" alt="软双喜">
+                    <div class="overlay">软双喜</div>
+                    <div class="image-name">软双喜</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="中华硬.png" alt="硬中华">
+                    <div class="overlay">硬中华</div>
+                    <div class="image-name">硬中华</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="软玉溪.png" alt="玉溪">
+                    <div class="overlay">玉溪</div>
+                    <div class="image-name">玉溪</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="金红塔山.jpg" alt="金红塔山">
+                    <div class="overlay">金红塔山</div>
+                    <div class="image-name">金红塔山</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="金陵十二钗.png" alt="金陵十二钗">
+                    <div class="overlay">金陵十二钗</div>
+                    <div class="image-name">金陵十二钗</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="钻石荷花.png" alt="钻石荷花">
+                    <div class="overlay">钻石荷花</div>
+                    <div class="image-name">钻石荷花</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="雅香金.jpg" alt="雅香金">
+                    <div class="overlay">雅香金</div>
+                    <div class="image-name">雅香金</div>
+                </div>
+
+                <div class="image-card">
+                    <img src="黑利群.jpg" alt="黑利群">
+                    <div class="overlay">黑利群</div>
+                    <div class="image-name">黑利群</div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </body>
 
-        <img src="combined.jpg" alt="Combined Cigarette Brands"
-            style="width:100%; height:auto; display:block; margin: 20px auto;">
-
-        <!-- 主要内容 -->
-        <main class="container">
-            <!-- 健康提示 -->
-            <div class="health-warning">
-                <h3>健康提示</h3>
-                <p>吸烟有害健康，本网站仅作烟草文化展示与鉴赏之用。未成年人禁止吸烟，建议吸烟者理性消费并尽早戒烟。</p>
-            </div>
-
-            <!-- 分类标签 -->
-            <div class="category-tabs">
-                <div class="category-tab active" data-category="all">全部品牌</div>
-                <div class="category-tab" data-category="premium">高端臻品</div>
-                <div class="category-tab" data-category="classic">经典系列</div>
-                <div class="category-tab" data-category="regional">地域特色</div>
-                <div class="category-tab" data-category="special">特别版</div>
-            </div>
-
-            <!-- 品牌展示区 -->
-            <section class="brands-section">
-                <div class="section-title">
-                    <h2>中国香烟品牌大全</h2>
-                </div>
-
-                <div class="brands-grid">
-                    <!-- 黑贵 -->
-                    <div class="brand-card" data-category="premium">
-                        <button class="add-to-cart" data-name="黑贵" data-origin="贵州中烟 · 高端系列">+</button>
-                        <div class="brand-image">
-                            <img src="黑贵.jpg" alt="黑贵香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO1.黑贵</h3>
-                            <div class="brand-origin">贵州中烟 · 高端系列</div>
-                            <p class="brand-desc">黑贵系列采用贵州特有烟叶配方，经过特殊发酵工艺，呈现出深邃的黑金色包装，口感醇厚绵长，余味纯净。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">限量版</span>
-                                <span class="feature-tag">醇厚型</span>
-                                <span class="feature-tag">商务尊享</span>
-                            </div>
-                        </div>
-                    </div>
+    </html>
 
 
-                    <!-- 芙蓉王 -->
-                    <div class="brand-card" data-category="classic">
-                        <div class="brand-image">
-                            <img src="芙蓉王.jpg" alt="芙蓉王香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO2.芙蓉王</h3>
-                            <div class="brand-origin">湖南中烟 · 经典系列</div>
-                            <p class="brand-desc">源自湖南的经典品牌，以"王者之气"为品牌内涵，历经数十年市场考验，成为中高端市场的标杆产品。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">经典款</span>
-                                <span class="feature-tag">醇香型</span>
-                                <span class="feature-tag">市场标杆</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 炫赫门 -->
-                    <div class="brand-card" data-category="special">
-                        <div class="brand-image">
-                            <img src="炫赫门.jpg" alt="炫赫门香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO3.炫赫门</h3>
-                            <div class="brand-origin">江苏中烟 · 创新系列</div>
-                            <p class="brand-desc">独特的开门式包装设计，融合现代科技与传统工艺，口感清新淡雅，深受年轻消费者喜爱。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">创新设计</span>
-                                <span class="feature-tag">清新口感</span>
-                                <span class="feature-tag">年轻时尚</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 云烟 -->
-                    <div class="brand-card" data-category="regional">
-                        <div class="brand-image">
-                            <img src="云烟.jpg" alt="云烟香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO4.云烟</h3>
-                            <div class="brand-origin">云南中烟 · 地域系列</div>
-                            <p class="brand-desc">云南优质烟叶的代表作，充分利用云南得天独厚的自然条件，创造出独具特色的"云系"香烟风格。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">云南特色</span>
-                                <span class="feature-tag">自然醇香</span>
-                                <span class="feature-tag">地域代表</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 钻石荷花 -->
-                    <div class="brand-card" data-category="premium">
-                        <div class="brand-image">
-                            <img src="钻石荷花 .png" alt="钻石荷花香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO5.钻石荷花</h3>
-                            <div class="brand-origin">河北中烟 · 典藏系列</div>
-                            <p class="brand-desc">荷花系列以"出淤泥而不染"为设计理念，钻石版采用特殊滤嘴技术，烟气柔和细腻，包装典雅高贵。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">文化典藏</span>
-                                <span class="feature-tag">柔和型</span>
-                                <span class="feature-tag">艺术包装</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 奇景 -->
-                    <div class="brand-card" data-category="special">
-                        <div class="brand-image">
-                            <img src="黄鹤楼.png" alt="黄鹤楼香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO6.黄鹤楼</h3>
-                            <div class="brand-origin">云南中烟 · 特色系列</div>
-                            <p class="brand-desc">包装设计展现云南自然风光奇观，烟草原香与自然风味的完美结合，带来独特的吸食体验。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">风景系列</span>
-                                <span class="feature-tag">特色风味</span>
-                                <span class="feature-tag">限量生产</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 红利群 -->
-                    <div class="brand-card" data-category="classic">
-                        <div class="brand-image">
-                            <img src="红利群.jpg" alt="红利群香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO7.红利群</h3>
-                            <div class="brand-origin">浙江中烟 · 大众系列</div>
-                            <p class="brand-desc">利群系列中的经典红色包装产品，口感浓郁饱满，余味悠长，是浙江地区的代表性香烟品牌。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">经典款</span>
-                                <span class="feature-tag">浓郁型</span>
-                                <span class="feature-tag">大众喜爱</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 白利群 -->
-                    <div class="brand-card" data-category="classic">
-                        <div class="brand-image">
-                            <img src="白利群.png" alt="白利群香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO8.白利群</h3>
-                            <div class="brand-origin">浙江中烟 · 大众系列</div>
-                            <p class="brand-desc">利群系列中的白色包装产品，相比红利群口感更为清淡柔和，适合喜欢淡雅口感的消费者。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">淡雅型</span>
-                                <span class="feature-tag">白色包装</span>
-                                <span class="feature-tag">系列产品</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 蓝楼 -->
-                    <div class="brand-card" data-category="premium">
-                        <div class="brand-image">
-                            <img src="蓝楼.jpg" alt="蓝楼香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO9.蓝楼</h3>
-                            <div class="brand-origin">湖北中烟 · 黄鹤楼系列</div>
-                            <p class="brand-desc">黄鹤楼系列中的蓝色包装高端产品，选用优质烟叶，口感醇和细腻，包装设计典雅大方。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">高端系列</span>
-                                <span class="feature-tag">醇和型</span>
-                                <span class="feature-tag">商务礼品</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 软玉溪 -->
-                    <div class="brand-card" data-category="classic">
-                        <div class="brand-image">
-                            <img src="软玉溪.png" alt="软玉溪香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO10.软玉溪</h3>
-                            <div class="brand-origin">云南红塔 · 经典系列</div>
-                            <p class="brand-desc">红塔集团经典产品，软包装设计便于携带，口感平衡适中，是云南烟草的经典代表作之一。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">经典软包</span>
-                                <span class="feature-tag">平衡口感</span>
-                                <span class="feature-tag">云南风味</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 软双喜 -->
-                    <div class="brand-card" data-category="regional">
-                        <div class="brand-image">
-                            <img src="双喜.jpg" alt="软双喜香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO11.软双喜</h3>
-                            <div class="brand-origin">广东中烟 · 传统系列</div>
-                            <p class="brand-desc">双喜品牌的软包装版本，传承广式香烟的传统风味，口感浓郁，是广东地区的经典香烟品牌。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">广东特色</span>
-                                <span class="feature-tag">传统风味</span>
-                                <span class="feature-tag">软包装</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 硬双喜 -->
-                    <div class="brand-card" data-category="regional">
-                        <div class="brand-image">
-                            <img src="硬双喜.jpg" alt="硬双喜香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO12.硬双喜</h3>
-                            <div class="brand-origin">广东中烟 · 传统系列</div>
-                            <p class="brand-desc">双喜品牌的硬盒包装版本，相比软包更便于携带，保留了双喜品牌的经典风味和品质。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">硬盒包装</span>
-                                <span class="feature-tag">经典风味</span>
-                                <span class="feature-tag">广东制造</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 雅香金 -->
-                    <div class="brand-card" data-category="special">
-                        <div class="brand-image">
-                            <img src="雅香金.jpg" alt="雅香金香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO13.雅香金</h3>
-                            <div class="brand-origin">多品牌 · 特色系列</div>
-                            <p class="brand-desc">注重香气表现的特色香烟产品，金色包装彰显尊贵，香气优雅持久，口感柔和舒适。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">香气突出</span>
-                                <span class="feature-tag">金色包装</span>
-                                <span class="feature-tag">柔和型</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- 中华 -->
-                    <div class="brand-card" data-category="premium">
-                        <div class="brand-image">
-                            <img src="中华.png" alt="中华香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO14.中华</h3>
-                            <div class="brand-origin">上海烟草 · 国宾系列</div>
-                            <p class="brand-desc">中国烟草的代表品牌，选用优质烟叶，经过三年自然醇化，香气浓郁纯正，是高端场合的经典之选。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">国礼品质</span>
-                                <span class="feature-tag">经典传承</span>
-                                <span class="feature-tag">尊贵象征</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 南京雨花石 -->
-                    <div class="brand-card" data-category="special">
-                        <div class="brand-image">
-                            <img src="南京雨花石.png" alt="南京雨花石香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO15.南京雨花石</h3>
-                            <div class="brand-origin">江苏中烟 · 特色系列</div>
-                            <p class="brand-desc">包装设计灵感来自南京特产雨花石，每包图案独特，口感清新淡雅，具有浓郁的地域文化特色。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">文化特色</span>
-                                <span class="feature-tag">清新口感</span>
-                                <span class="feature-tag">收藏价值</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 红南京 -->
-                    <div class="brand-card" data-category="regional">
-                        <div class="brand-image">
-                            <img src="红南京.jpg" alt="红南京香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO16.红南京</h3>
-                            <div class="brand-origin">江苏中烟 · 经典系列</div>
-                            <p class="brand-desc">南京系列中的经典红色包装产品，价格亲民，口感适中，是江苏地区的代表性香烟品牌。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">经典款</span>
-                                <span class="feature-tag">适中口感</span>
-                                <span class="feature-tag">地域代表</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- 好日子软 -->
-                    <div class="brand-card" data-category="regional">
-                        <div class="brand-image">
-                            <img src="好日子.png" alt="好日子软香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO17.好日子软</h3>
-                            <div class="brand-origin">深圳烟草 · 传统系列</div>
-                            <p class="brand-desc">软包装设计，寓意吉祥如意，主要在华南地区销售，口感醇和，价格亲民。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">吉祥寓意</span>
-                                <span class="feature-tag">软包装</span>
-                                <span class="feature-tag">华南特色</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 白软红塔山 -->
-                    <div class="brand-card" data-category="classic">
-                        <div class="brand-image">
-                            <img src="白软红塔山.jpg" alt="白软红塔山香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO18.白软红塔山</h3>
-                            <div class="brand-origin">云南红塔 · 经典系列</div>
-                            <p class="brand-desc">红塔山系列的白色软包装版本，口感清爽，包装简约，是红塔山品牌的重要产品线之一。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">白色包装</span>
-                                <span class="feature-tag">清爽口感</span>
-                                <span class="feature-tag">经典系列</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 金红塔山 -->
-                    <div class="brand-card" data-category="premium">
-                        <div class="brand-image">
-                            <img src="硬金红塔山.jpg" alt="金红塔山香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO19.金红塔山</h3>
-                            <div class="brand-origin">云南红塔 · 高端系列</div>
-                            <p class="brand-desc">红塔山系列中的金色包装高端产品，选用特级烟叶，口感更为醇厚，包装奢华大气。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">高端系列</span>
-                                <span class="feature-tag">醇厚型</span>
-                                <span class="feature-tag">金色包装</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 峡谷柔情 -->
-                    <div class="brand-card" data-category="special">
-                        <div class="brand-image">
-                            <img src="峡谷柔情.png" alt="峡谷柔情香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO20.峡谷柔情</h3>
-                            <div class="brand-origin">云南中烟 · 特色系列</div>
-                            <p class="brand-desc">包装设计展现云南峡谷风光，口感柔和细腻，烟气纯净，带来独特的吸食体验。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">风景系列</span>
-                                <span class="feature-tag">柔和型</span>
-                                <span class="feature-tag">特色产品</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 黑利群 -->
-                    <div class="brand-card" data-category="premium">
-                        <div class="brand-image">
-                            <img src="黑利群.jpg" alt="黑利群香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO21.黑利群</h3>
-                            <div class="brand-origin">浙江中烟 · 高端系列</div>
-                            <p class="brand-desc">利群系列中的黑色包装高端产品，定位商务市场，口感醇厚，余味悠长，包装低调奢华。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">商务系列</span>
-                                <span class="feature-tag">醇厚型</span>
-                                <span class="feature-tag">高端定位</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 荷花 -->
-                    <div class="brand-card" data-category="premium">
-                        <div class="brand-image">
-                            <img src="荷花.png" alt="荷花香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO22.荷花</h3>
-                            <div class="brand-origin">河北中烟 · 典藏系列</div>
-                            <p class="brand-desc">以荷花为设计主题的高端香烟品牌，包装清新典雅，口感细腻柔和，具有独特的文化韵味。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">文化典藏</span>
-                                <span class="feature-tag">柔和型</span>
-                                <span class="feature-tag">艺术包装</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 蓝利群 -->
-                    <div class="brand-card" data-category="classic">
-                        <div class="brand-image">
-                            <img src="蓝利群.jpg" alt="蓝利群香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO23.蓝利群</h3>
-                            <div class="brand-origin">浙江中烟 · 大众系列</div>
-                            <p class="brand-desc">利群系列中的蓝色包装产品，相比传统利群口感更为清爽，适合喜欢淡雅口感的消费者。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">淡雅型</span>
-                                <span class="feature-tag">蓝色包装</span>
-                                <span class="feature-tag">系列产品</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 七匹狼 -->
-                    <div class="brand-card" data-category="regional">
-                        <div class="brand-image">
-                            <img src="七匹狼.jpg" alt="七匹狼香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO24.七匹狼</h3>
-                            <div class="brand-origin">福建中烟 · 地域系列</div>
-                            <p class="brand-desc">福建特色香烟品牌，以闽南文化为背景，包装设计展现狼的野性与力量，口感浓郁独特。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">福建特色</span>
-                                <span class="feature-tag">浓郁型</span>
-                                <span class="feature-tag">文化象征</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 紫云 -->
-                    <div class="brand-card" data-category="classic">
-                        <div class="brand-image">
-                            <img src="紫云.jpg" alt="紫云香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO25.紫云</h3>
-                            <div class="brand-origin">云南红塔 · 经典系列</div>
-                            <p class="brand-desc">红塔集团经典产品，紫色包装典雅大方，口感醇和适中，在西南地区有较高市场占有率。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">经典款</span>
-                                <span class="feature-tag">醇和型</span>
-                                <span class="feature-tag">紫色包装</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 金陵十二钗 -->
-                    <div class="brand-card" data-category="special">
-                        <div class="brand-image">
-                            <img src="金陵十二钗.jpg" alt="金陵十二钗香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO26.金陵十二钗</h3>
-                            <div class="brand-origin">江苏中烟 · 文化系列</div>
-                            <p class="brand-desc">以《红楼梦》金陵十二钗为设计灵感，每款包装展现一位金钗形象，文化气息浓厚，口感清新淡雅。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">文化收藏</span>
-                                <span class="feature-tag">淡雅型</span>
-                                <span class="feature-tag">限量版</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- 红牡丹 -->
-                    <div class="brand-card" data-category="classic">
-                        <div class="brand-image">
-                            <img src="红牡丹.png" alt="红牡丹香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO27.红牡丹</h3>
-                            <div class="brand-origin">上海烟草 · 经典系列</div>
-                            <p class="brand-desc">上海烟草经典品牌，红色牡丹花包装极具辨识度，口感浓郁饱满，是华东地区的经典香烟。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">经典款</span>
-                                <span class="feature-tag">浓郁型</span>
-                                <span class="feature-tag">华东地区</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 真龙 -->
-                    <div class="brand-card" data-category="regional">
-                        <div class="brand-image">
-                            <img src="真龙.jpg" alt="真龙香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO28.真龙</h3>
-                            <div class="brand-origin">广西中烟 · 地域系列</div>
-                            <p class="brand-desc">广西特色香烟品牌，以龙文化为主题，包装设计大气磅礴，口感醇厚，在华南地区广受欢迎。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">广西特色</span>
-                                <span class="feature-tag">龙文化</span>
-                                <span class="feature-tag">醇厚型</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 黑白沙 -->
-                    <div class="brand-card" data-category="classic">
-                        <div class="brand-image">
-                            <img src="黑白沙.png" alt="黑白沙香烟">
-                        </div>
-                        <div class="brand-info">
-                            <h3 class="brand-name">LO29.黑白沙</h3>
-                            <div class="brand-origin">湖南中烟 · 经典系列</div>
-                            <p class="brand-desc">白沙系列中的黑白配色经典产品，简约包装设计，口感清爽自然，性价比高。</p>
-                            <div class="brand-features">
-                                <span class="feature-tag">经典款</span>
-                                <span class="feature-tag">清爽型</span>
-                                <span class="feature-tag">黑白设计</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </section>
-        </main>
-
-        <!-- 页脚 -->
-        <footer>
-            <div class="container">
-                <div class="footer-logo"></div>
-                <div class="health-warning">
-                    <h3>健康忠告</h3>
-                    <p>吸烟有害健康，本网站内容不构成任何吸烟建议，请遵守当地控烟法律法规。</p>
-                </div>
-                <div class="copyright"></div>
-            </div>
-        </footer>
+    <div class="health-warning">
+        <h3>健康忠告</h3>
+        <p>吸烟有害健康，本网站内容不构成任何吸烟建议，请遵守当地控烟法律法规。</p>
+    </div>
+    <div class="copyright"></div>
+    </div>
+    </footer>
     </div>
 
     <script src="script.js"></script>
